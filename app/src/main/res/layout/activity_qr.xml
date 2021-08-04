@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="qrscan.ng.com.ngqrcode.QrActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Card Number"/>
+            <EditText
+                android:id="@+id/txtCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Number" />
+            <TextView
+                android:id="@+id/lblBankIFSCCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Bank IFSC Code"/>
+            <EditText
+                android:id="@+id/txtBankIFSCCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:hint="Bank IFSC Code" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Merchant Name"/>
+            <EditText
+                android:id="@+id/txtMerchantName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Merchant Name" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Merchant Category Code"/>
+            <EditText
+                android:id="@+id/txtMCCode"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Merchant Category Code" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Merchant City"/>
+            <EditText
+                android:id="@+id/txtMerchantCity"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Merchant City" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Merchant Country"/>
+            <EditText
+                android:id="@+id/txtCountryCode"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Country Code" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transaction Amount"/>
+            <EditText
+                android:id="@+id/txtTransactionAmount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:hint="Transaction Amount" />
+            <TextView
+                android:id="@+id/lblCurrencyCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transaction Currency Code"/>
+            <AutoCompleteTextView
+                android:id="@+id/txtCurrencyCode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:width="250dip" />
+            <TextView
+                android:id="@+id/lblTipOrConveynaceFee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Tip/Conveyance Fee"/>
+            <EditText
+                android:id="@+id/txtTipOrConvenienceFee"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:visibility="gone"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:hint="Tip/Convenience Fee" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bill Number"/>
+            <EditText
+                android:id="@+id/txtBillNumber"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Bill Number" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mobile Number"/>
+            <EditText
+                android:id="@+id/txtMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Mobile Number" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Consumer Id"/>
+            <EditText
+                android:id="@+id/txtConsumerId"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Consumer Id" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reference Id"/>
+            <EditText
+                android:id="@+id/txtReferenceId"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Reference Id" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terminal Id"/>
+            <EditText
+                android:id="@+id/txtTerminalId"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Terminal Id" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Purpose"/>
+            <EditText
+                android:id="@+id/txtPurpose"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:hint="Purpose" />
+            <TextView
+                android:id="@+id/lblFinalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Amount"/>
+            <TextView
+                android:id="@+id/txtPaidAmount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="Amount to be Paid" />
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Proceed" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

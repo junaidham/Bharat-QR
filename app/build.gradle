@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "qrscan.ng.com.ngqrcode"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+      /*  jackOptions {
+            enabled false
+        }*/
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+/*    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }*/
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    //compile fileTree(include: ['*.jar'], dir: 'libs')
+    //add this dependency
+
+    implementation(name: 'qr-scan-sdk-release-1.0.0', ext: 'aar')
+    implementation files('libs/pushpayment-core-sdk-2.0.0.jar')
+   // compile files('libs/QRCodeProject-0.0.1-SNAPSHOT-jar-with-dependencies.jar')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "com.android.support:support-annotations:28.0.0"
+    implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
+    //adding volley with this line
+    implementation 'com.android.volley:volley:1.1.0'
+
+    // https://mvnrepository.com/artifact/commons-codec/commons-codec
+    implementation group: 'commons-codec', name: 'commons-codec', version: '1.9'
+
+    // https://mvnrepository.com/artifact/commons-configuration/commons-configuration
+    implementation group: 'commons-configuration', name: 'commons-configuration', version: '1.10'
+
+}
