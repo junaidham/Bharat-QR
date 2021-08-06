@@ -28,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.mastercard.mpqr.pushpayment.enums.PPTag;
 import com.mastercard.mpqr.pushpayment.exception.ConflictiveTagException;
 import com.mastercard.mpqr.pushpayment.exception.FormatException;
 import com.mastercard.mpqr.pushpayment.exception.InvalidTagValueException;
@@ -205,6 +206,7 @@ public class QrActivity  extends AppCompatActivity implements View.OnClickListen
             qrcode.validate();
             System.out.println("dump_data" + qrcode.dumpData());
             Log.d("QrActivity","dump_data"+qrcode.dumpData());
+            getQRData(qrcode);
 
             if(qrcode.getMerchantIdentifierVisa02()!=null) {
                 MerchantId = qrcode.getMerchantIdentifierVisa02(); // Display card number getting the card type
@@ -641,4 +643,47 @@ public class QrActivity  extends AppCompatActivity implements View.OnClickListen
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+
+
+
+    private void getQRData(PushPaymentData qrCode) {
+        try {
+            Log.d("createdQR","CRC: "+ qrCode.getCRC());
+            Log.d("createdQR","PushPaymentString: "+ qrCode.generatePushPaymentString());
+            Log.d("createdQR","CountryCode: "+ qrCode.getCountryCode());
+            Log.d("createdQR","MerchantCategoryCode: "+ qrCode.getMerchantCategoryCode());
+            Log.d("createdQR","MerchantCity: "+ qrCode.getMerchantCity());
+            Log.d("createdQR","PostalCode: "+ qrCode.getPostalCode());
+            Log.d("createdQR","MerchantName: "+ qrCode.getMerchantName());
+            Log.d("createdQR","PayloadFormatIndicator: "+ qrCode.getPayloadFormatIndicator());
+            Log.d("createdQR","PointOfInitiationMethod: "+ qrCode.getPointOfInitiationMethod());
+            Log.d("createdQR","TransactionAmount: "+ qrCode.getTransactionAmount());
+            Log.d("createdQR","LanguageData: "+ qrCode.getLanguageData());
+            Log.d("createdQR","MerchantIdentifierVisa02: "+ qrCode.getMerchantIdentifierVisa02());
+            Log.d("createdQR","MerchantIdentifierVisa03: "+ qrCode.getMerchantIdentifierVisa03());
+            Log.d("createdQR","MerchantIdentifierMastercard04: "+ qrCode.getMerchantIdentifierMastercard04());
+            Log.d("createdQR","MerchantIdentifierMastercard05: "+ qrCode.getMerchantIdentifierMastercard05());
+            Log.d("createdQR","MerchantIdentifierNPCI06: "+ qrCode.getMerchantIdentifierNPCI06());
+            Log.d("createdQR","MerchantIdentifierNPCI07: "+ qrCode.getMerchantIdentifierNPCI07());
+            Log.d("createdQR","MerchantIdentifierOthers08: "+ qrCode.getMerchantIdentifierOthers08());
+            Log.d("createdQR","MerchantIdentifierOthers08: "+ qrCode.getMerchantIdentifierOthers08());
+            Log.d("createdQR","MerchantIdentifierOthers09: "+ qrCode.getMerchantIdentifierOthers09());
+            Log.d("createdQR","ValueOfConvenienceFeeFixed: "+ qrCode.getValueOfConvenienceFeeFixed());
+            Log.d("createdQR","ValueOfConvenienceFeePercentage: "+ qrCode.getValueOfConvenienceFeePercentage());
+            Log.d("createdQR","TransactionCurrencyCode: "+ qrCode.getTransactionCurrencyCode());
+            Log.d("createdQR","TipOrConvenienceIndicator: "+ qrCode.getTipOrConvenienceIndicator());
+            Log.d("createdQR","AdditionalData: "+ qrCode.getAdditionalData());
+            Log.d("createdQR","AdditionalData-ConsumerId: "+ qrCode.getAdditionalData().getConsumerId());
+            Log.d("createdQR","AdditionalData-BillNumber: "+ qrCode.getAdditionalData().getBillNumber());
+            Log.d("createdQR","AdditionalData-MobileNumber: "+ qrCode.getAdditionalData().getMobileNumber());
+            Log.d("createdQR","AdditionalData-ReferenceId: "+ qrCode.getAdditionalData().getReferenceId());
+            Log.d("createdQR","AdditionalData-StoreId: "+ qrCode.getAdditionalData().getStoreId());
+            Log.d("createdQR","AdditionalData-TerminalId: "+ qrCode.getAdditionalData().getTerminalId());
+        } catch (FormatException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

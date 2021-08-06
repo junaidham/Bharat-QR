@@ -14,6 +14,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.mastercard.mpqr.pushpayment.enums.PPTag;
 import com.mastercard.mpqr.pushpayment.exception.FormatException;
 import com.mastercard.mpqr.pushpayment.model.PushPaymentData;
 import com.mastercard.mpqr.pushpayment.parser.Parser;
@@ -43,7 +44,7 @@ public class createdQR extends AppCompatActivity {
         Bundle bun = getIntent().getExtras();
         if( bun != null ){
             String qrString = bun.getString("qrstring");
-            Log.e("onCreate","qrString"+ qrString);
+            Log.e("createdQR","qrString: "+ qrString);
             try {
                 bitmap=TextToImageEncode(qrString);
                 imageView.setImageBitmap(bitmap);
@@ -54,6 +55,7 @@ public class createdQR extends AppCompatActivity {
                 qrcode.validate();
                 Log.w("onCreate","dump_data"+qrcode.dumpData());
                 editText.setText(qrcode.dumpData().toString());
+                getQRData(qrcode);
             } catch (WriterException e) {
                 e.printStackTrace();
             } catch (FormatException e) {
@@ -64,8 +66,42 @@ public class createdQR extends AppCompatActivity {
 
     }
 
+    private void getQRData(PushPaymentData qrCode) {
+        try {
+            Log.d("createdQR","CRC: "+ qrCode.getCRC());
+            Log.d("createdQR","PushPaymentString: "+ qrCode.generatePushPaymentString());
+            Log.d("createdQR","CountryCode: "+ qrCode.getCountryCode());
+            Log.d("createdQR","MerchantCategoryCode: "+ qrCode.getMerchantCategoryCode());
+            Log.d("createdQR","MerchantCity: "+ qrCode.getMerchantCity());
+            Log.d("createdQR","PostalCode: "+ qrCode.getPostalCode());
+            Log.d("createdQR","MerchantName: "+ qrCode.getMerchantName());
+            Log.d("createdQR","PayloadFormatIndicator: "+ qrCode.getPayloadFormatIndicator());
+            Log.d("createdQR","PointOfInitiationMethod: "+ qrCode.getPointOfInitiationMethod());
+            Log.d("createdQR","ValueWithLuhnChecksum: "+ qrCode.getValueWithLuhnChecksum(PPTag.TAG_63_CRC));
+            Log.d("createdQR","TransactionAmount: "+ qrCode.getTransactionAmount());
+            Log.d("createdQR","LanguageData: "+ qrCode.getLanguageData());
+            Log.d("createdQR","MerchantIdentifierVisa02: "+ qrCode.getMerchantIdentifierVisa02());
+            Log.d("createdQR","MerchantIdentifierVisa03: "+ qrCode.getMerchantIdentifierVisa03());
+            Log.d("createdQR","MerchantIdentifierMastercard04: "+ qrCode.getMerchantIdentifierMastercard04());
+            Log.d("createdQR","MerchantIdentifierMastercard05: "+ qrCode.getMerchantIdentifierMastercard05());
+            Log.d("createdQR","MerchantIdentifierNPCI06: "+ qrCode.getMerchantIdentifierNPCI06());
+            Log.d("createdQR","MerchantIdentifierNPCI07: "+ qrCode.getMerchantIdentifierNPCI07());
+            Log.d("createdQR","MerchantIdentifierOthers08: "+ qrCode.getMerchantIdentifierOthers08());
+            Log.d("createdQR","MerchantIdentifierOthers08: "+ qrCode.getMerchantIdentifierOthers08());
+            Log.d("createdQR","MerchantIdentifierOthers09: "+ qrCode.getMerchantIdentifierOthers09());
+            Log.d("createdQR","ValueOfConvenienceFeeFixed: "+ qrCode.getValueOfConvenienceFeeFixed());
+            Log.d("createdQR","ValueOfConvenienceFeePercentage: "+ qrCode.getValueOfConvenienceFeePercentage());
+            Log.d("createdQR","TransactionCurrencyCode: "+ qrCode.getTransactionCurrencyCode());
+            Log.d("createdQR","TipOrConvenienceIndicator: "+ qrCode.getTipOrConvenienceIndicator());
+            Log.d("createdQR","AdditionalData: "+ qrCode.getAdditionalData());
+        } catch (FormatException e) {
+            e.printStackTrace();
+        }
 
-        Bitmap TextToImageEncode(String Value) throws WriterException {
+    }
+
+
+    Bitmap TextToImageEncode(String Value) throws WriterException {
             BitMatrix bitMatrix;
             try {
                 bitMatrix = new MultiFormatWriter().encode(

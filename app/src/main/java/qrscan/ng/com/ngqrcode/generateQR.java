@@ -91,7 +91,7 @@ public class generateQR extends AppCompatActivity implements View.OnClickListene
    // private ProgressDialog pDialog;
     private Button btnSubmit;
 
-    //private ArrayAdapter<String> adapterCountry;
+    private ArrayAdapter<String> adapterCountry;
     private ArrayAdapter<String> adapterCountryCode;
     private ArrayAdapter<String> adapterCurrency;
     private ArrayAdapter<String> adapterMcc;
@@ -267,7 +267,7 @@ public class generateQR extends AppCompatActivity implements View.OnClickListene
 
     public void submitForm(){
 
-        if (validateData()==true){
+        if (validateData()){
             final ProgressDialog pDialog = new ProgressDialog(this);
             pDialog.setMessage("Please wait, Qr Code is genetating...");
             pDialog.setCancelable(false);
@@ -277,7 +277,7 @@ public class generateQR extends AppCompatActivity implements View.OnClickListene
             qrData.put(SystemConstants.Tag01,"QR");
             GenerateStringValue generateStringValue=new GenerateStringValue();
             qrCodeText = generateStringValue.getStringValue(qrData);
-            Log.e("generateQR","QR Code"+ qrCodeText);
+            Log.e("generateQR","QR Code: "+ qrCodeText);
 //            Toast.makeText(getApplicationContext(),"QR Code Generated : " +qrCodeText ,Toast.LENGTH_SHORT).show();
 
             final Bundle bun2 = new Bundle();
@@ -319,7 +319,7 @@ public class generateQR extends AppCompatActivity implements View.OnClickListene
             txtCardNumber.setFocusable(true);
             return false;
         }
-        if (radioDynamic.isChecked()==true && txtTransactionAmt.getText().toString().length()==0 )
+        if (radioDynamic.isChecked() && txtTransactionAmt.getText().toString().length()==0 )
         {
             Toast.makeText(getApplicationContext(),"Enter transaction amount",Toast.LENGTH_SHORT).show();
             txtTransactionAmt.setError("Enter transaction amount");
@@ -327,7 +327,7 @@ public class generateQR extends AppCompatActivity implements View.OnClickListene
             txtTransactionAmt.requestFocus();
             return false;
         }
-        if (radioDynamic.isChecked()==true && txtTransactionAmt.getText()!=null )
+        if (radioDynamic.isChecked() && txtTransactionAmt.getText()!=null )
         {
             // Toast.makeText(getApplicationContext(),"Enter transaction amount",Toast.LENGTH_SHORT).show();
             if (Float.parseFloat(txtTransactionAmt.getText().toString())<=0.00){
@@ -449,7 +449,7 @@ public class generateQR extends AppCompatActivity implements View.OnClickListene
             qrData.put(SystemConstants.Tag62,addData);
         }
 
-        if (radioDynamic.isChecked()==true && txtTransactionAmt.getText()!=null )
+        if (radioDynamic.isChecked() && txtTransactionAmt.getText()!=null )
         {
             if (Float.parseFloat(txtTransactionAmt.getText().toString())>0.00){
                 txnAmount = Float.parseFloat(txtTransactionAmt.getText().toString());
